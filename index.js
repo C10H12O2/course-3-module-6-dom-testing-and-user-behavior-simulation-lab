@@ -25,6 +25,10 @@ function createElement(tag, attributes = {}, textContent = '') {
     return element
 }
 
+function addElementToDOM(id, content) {
+    const element  = createElement('div', {id}, content)
+    document.body.appendChild(element)
+}
 
 function simulateClick(id, text) {
     const element = document.getElementById(id)
