@@ -44,7 +44,7 @@ function simulateClick(id, text) {
     }
 }
 
-function handleFormSubmits(formId, targetId) {
+function handleFormSubmit(formId, targetId) {
     const form = document.getElementById(formId)
     const input = form.querySelector('input')
     const target = document.getElementById(targetId)
@@ -60,8 +60,12 @@ function handleFormSubmits(formId, targetId) {
         errorMessage.classList.remove('hidden')
         return
     }
-
-
     errorMessage.classList.add('hidden')
     target.textContent = input.value
+}
+module.exports = {
+    addElementToDOM,
+    removeElementFromDOM,
+    simulateClick,
+    handleFormSubmit,
 }
