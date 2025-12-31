@@ -13,3 +13,22 @@
 // Step 4: Reusable Utilities
 // - Create modular utility functions, such as createElement(tag, attributes).
 // - Ensure all functions follow DRY principles for maintainability.
+
+function createElement(tag, attributes = {}, textContent = '') {
+    const element = document.createElement(tag)
+    for (let key in attributes) {
+        element.setAttribute(key, attributes[key])
+    }
+    if (text) {
+        element.textContent = text
+    }
+    return element
+}
+
+
+function simulateClick(id, text) {
+    const element = document.getElementById(id)
+    if (element) {
+        element.remove()
+    }
+}
