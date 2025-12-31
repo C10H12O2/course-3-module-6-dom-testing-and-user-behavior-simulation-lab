@@ -14,7 +14,7 @@
 // - Create modular utility functions, such as createElement(tag, attributes).
 // - Ensure all functions follow DRY principles for maintainability.
 
-function createElement(tag, attributes = {}, textContent = '') {
+function createElement(tag, attributes = {}, text = '') {
     const element = document.createElement(tag)
     for (let key in attributes) {
         element.setAttribute(key, attributes[key])
@@ -26,8 +26,12 @@ function createElement(tag, attributes = {}, textContent = '') {
 }
 
 function addElementToDOM(id, content) {
-    const element = createElement('div', { id }, content)
-    document.body.appendChild(element)
+   let element = document.getElementById(id)
+    if (!element) {
+        element = createElement('div', { id: id })
+        document.body.appendChild(element)
+    }
+    element.textContent = content
 }
 
 function removeElementFromDOM(id) {
@@ -37,11 +41,13 @@ function removeElementFromDOM(id) {
     }
 }
 
-function simulateClick(id, text) {
-    const element = document.getElementById(id)
-    if (element) {
-        element.remove()
+function simulateClick(targetId, message) {
+    let target = document.getElementById(targetId)
+    if (!target) {
+        target = createElement('div', { id: targetId })
+        document.body.appendChild(target)
     }
+    target.textContent = message
 }
 
 function handleFormSubmit(formId, targetId) {
@@ -64,6 +70,7 @@ function handleFormSubmit(formId, targetId) {
     target.textContent = input.value
 }
 module.exports = {
+    createElement,
     addElementToDOM,
     removeElementFromDOM,
     simulateClick,
