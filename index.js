@@ -43,3 +43,25 @@ function simulateClick(id, text) {
         element.remove()
     }
 }
+
+function handleFormSubmits(formId, targetId) {
+    const form = document.getElementById(formId)
+    const input = form.querySelector('input')
+    const target = document.getElementById(targetId)
+
+    let errorMessage = document.getElementById('error-message')
+    if (!errorMessage) {
+        errorMessage = createElement('div', { id: 'error-message', class: 'hidden' })
+        document.body.appendChild(errorMessage)
+    }
+
+    if (!input.value) {
+        errorMessage.textContent = 'Input cannot be empty'
+        errorMessage.classList.remove('hidden')
+        return
+    }
+
+
+    errorMessage.classList.add('hidden')
+    target.textContent = input.value
+}
