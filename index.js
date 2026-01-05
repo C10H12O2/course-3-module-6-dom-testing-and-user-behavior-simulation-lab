@@ -75,4 +75,4 @@ module.exports = {
     removeElementFromDOM,
     simulateClick,
     handleFormSubmit,
-}
+} 
